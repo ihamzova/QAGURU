@@ -11,6 +11,6 @@ import static com.codeborne.selenide.Selenide.open;
             open("https://www.google.com/");
             $("[name=q]").setValue("selenide").pressEnter();
             $("[id=search]").shouldHave(text("https://selenide.org"));
-            System.out.println("changes in domain needed");
+            System.out.println("changes in domain not needed");
  }
     }
