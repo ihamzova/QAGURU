@@ -11,12 +11,17 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationFormPage {
+
+    CalenderComponents calenderComponents = new CalenderComponents();
+    ResultsComponent resultsComponent = new ResultsComponent();
+
     SelenideElement firstName = $("#firstName"),
             lastName = $("#lastName"),
             userEmail = $("#userEmail"),
             userNumber = $("#userNumber"),
             gender = $(byText("Male")),
             dateOfBirth = $("#dateOfBirthInput"),
+            subjectAutoCompleteField = $(".subjects-auto-complete__value-container"),
             subject = $(byText("English")),
             subjectInput = $("#subjectsInput"),
             hobby = $(byText("Reading")),
@@ -27,9 +32,6 @@ public class RegistrationFormPage {
             cityInput = $(byText("Karnal")),
             submit = $("#submit");
 
-
-    CalenderComponents calenderComponents = new CalenderComponents();
-    ResultsComponent resultsComponent = new ResultsComponent();
 
     public RegistrationFormPage open() {
         Selenide.open("/automation-practice-form");
@@ -58,20 +60,21 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setGender() {
+    public RegistrationFormPage setGender(String value) {
         gender.click();
         return this;
     }
 
-    public RegistrationFormPage setDateOfBirth(String month, String year, String day) {
+
+    public RegistrationFormPage setDateOfBirth(String value) {
         dateOfBirth.click();
-        calenderComponents.setDate(month, year, day);
+        calenderComponents.setDate(value);
         return this;
     }
 
     public RegistrationFormPage setSubject(String value) {
         subjectInput.setValue(value);
-        subject.click();
+        subjectInput.click();
         return this;
     }
 
@@ -105,7 +108,6 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage checkResult(String key, String value) {
         resultsComponent.checkResult(key, value);
-
         return this;
     }
 }
