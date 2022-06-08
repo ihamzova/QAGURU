@@ -1,3 +1,4 @@
+package qaGuru.Tests;
 
 import org.junit.jupiter.api.Test;
 
