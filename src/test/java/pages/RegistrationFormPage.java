@@ -73,8 +73,9 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setSubject(String value) {
-        subjectInput.setValue(value);
-        subjectInput.click();
+        subjectAutoCompleteField.click();
+        subjectAutoCompleteField.setValue(value);
+        subjectAutoCompleteField.click();
         return this;
     }
 
