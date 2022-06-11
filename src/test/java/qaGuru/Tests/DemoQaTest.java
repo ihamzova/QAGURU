@@ -1,13 +1,9 @@
 package qaGuru.Tests;
 
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import pages.RegistrationFormPage;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class DemoQaTest extends TestBase {
     String name = "Alex";
@@ -26,13 +22,14 @@ public class DemoQaTest extends TestBase {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
-    @Test
-    void demoQaTest() {
-
+    @DisplayName("Test with ValueSourse")
+    @ValueSource(strings = {"Anna", "Света"})
+    @ParameterizedTest(name = "Заполнения формы регистрации студента с именем {0}")
+    void demoQaTest(String testData) {
         registrationFormPage.open().
-                setFirstName(name).
+                setFirstName(testData).
                 setLastName(surname).
-                setGender().
+                setGender(gender).
                 setUserEmail(email).
                 setUserNumber(mobile).
                 setDateOfBirth(month, year, date).
@@ -42,7 +39,7 @@ public class DemoQaTest extends TestBase {
                 setState(state).
                 setCity(city).
                 submit().
-                checkResult("Student Name", name + " " + surname).
+                checkResult("Student Name", gender + " " + surname).
                 checkResult("Student Email", email).
                 checkResult("Gender", "Male").
                 checkResult("Mobile", mobile).
@@ -51,8 +48,6 @@ public class DemoQaTest extends TestBase {
                 checkResult("Hobbies", hobby).
                 checkResult("Address", address).
                 checkResult("State and City", state + " " + city);
-
-
     }
 }
 
