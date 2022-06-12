@@ -21,6 +21,9 @@ public class TestData {
     String address = fakerRu.address().fullAddress();
     String state = RandomUtils.getRandomState();
     String city = RandomUtils.getRandomCity(state);
-    String dayofBirth = RandomUtils.getRandomDate();
+    String birthYear = String.valueOf(fakerEn.number().numberBetween(1900, 2022));
+    String birthMonth = "March";
+    String birthDay = "08";
+    String birthDate = birthDay + " " + birthMonth + "," + birthYear;
 
 }

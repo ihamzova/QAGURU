@@ -19,11 +19,11 @@ public class RegistrationFormPage {
             lastName = $("#lastName"),
             userEmail = $("#userEmail"),
             userNumber = $("#userNumber"),
-            gender = $(byText("Male")),
+            gender = $("#genterWrapper"),
             dateOfBirth = $("#dateOfBirthInput"),
             subjectAutoCompleteField = $(".subjects-auto-complete__value-container"),
             subject = $(byText("English")),
-            subjectInput = $("#subjectsInput"),
+            subjectInput=$("#subjectsInput"),
             hobby = $(byText("Reading")),
             currentAddress = $("#currentAddress"),
             currentState = $("#state"),
@@ -61,26 +61,25 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setGender(String value) {
-        gender.click();
+        gender.$(byText(value)).click();
         return this;
     }
 
 
-    public RegistrationFormPage setDateOfBirth(String value) {
+    public RegistrationFormPage setDateOfBirth(String month, String year, String day) {
         dateOfBirth.click();
-        calenderComponents.setDate(value);
+        calenderComponents.setDate(day, month, year);
         return this;
     }
 
     public RegistrationFormPage setSubject(String value) {
-        subjectAutoCompleteField.click();
-        subjectAutoCompleteField.setValue(value);
-        subjectAutoCompleteField.click();
+        subjectInput.sendKeys(value);
+        subjectInput.pressEnter();
         return this;
     }
 
     public RegistrationFormPage setHobby(String value) {
-        hobby.click();
+        $(byText(value)).click();
         return this;
     }
 
@@ -92,13 +91,13 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setState(String value) {
         currentState.click();
-        currentStateInput.click();
+        $(byText(value)).click();
         return this;
     }
 
     public RegistrationFormPage setCity(String value) {
         city.click();
-        cityInput.click();
+        $(byText(value)).click();
         return this;
     }
 

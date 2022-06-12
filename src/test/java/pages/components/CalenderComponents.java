@@ -1,19 +1,13 @@
 package pages.components;
 
-import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CalenderComponents {
 
-    public void setDate(String dateBirthday) {
-        String[] subStr;
-        String delimeters = " ";
-        subStr = dateBirthday.split(delimeters);
-        $(".react-datepicker__month-select").selectOption(subStr[1]);
-        $(".react-datepicker__year-select").selectOption(subStr[2]);
-        $(".react-datepicker__day--0" + subStr[0] +
+    public void setDate(String day, String month, String year) {
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
+        $(".react-datepicker__day--0" + day +
                 ":not(.react-datepicker__day--outside-month)").click();
     }
 
