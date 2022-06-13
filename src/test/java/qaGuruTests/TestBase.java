@@ -1,4 +1,4 @@
-package qaGuru.Tests;
+package qaGuruTests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
