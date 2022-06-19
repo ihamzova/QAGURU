@@ -15,10 +15,10 @@ public class RegistrationFormPage {
             lastName = $("#lastName"),
             userEmail = $("#userEmail"),
             userNumber = $("#userNumber"),
-            gender = $(byText("Male")),
+            gender = $("#genterWrapper"),
             dateOfBirth = $("#dateOfBirthInput"),
-            subject = $(byText("English")),
-            subjectInput = $("#subjectsInput"),
+            subject = $("#subjectsInput"),
+            subjectInput=$("#subjectsInput"),
             hobby = $(byText("Reading")),
             currentAddress = $("#currentAddress"),
             currentState = $("#state"),
@@ -43,10 +43,12 @@ public class RegistrationFormPage {
         return this;
     }
 
+
     public RegistrationFormPage setLastName(String value) {
         lastName.setValue(value);
         return this;
     }
+
 
     public RegistrationFormPage setUserEmail(String value) {
         userEmail.setValue(value);
@@ -58,11 +60,10 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setGender() {
-        gender.click();
+    public RegistrationFormPage setGender(String value) {
+        gender.$(byText(value)).click();
         return this;
     }
-
     public RegistrationFormPage setDateOfBirth(String month, String year, String day) {
         dateOfBirth.click();
         calenderComponents.setDate(month, year, day);
@@ -70,8 +71,8 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setSubject(String value) {
-        subjectInput.setValue(value);
-        subject.click();
+        subjectInput.sendKeys(value);
+        subjectInput.pressEnter();
         return this;
     }
 
