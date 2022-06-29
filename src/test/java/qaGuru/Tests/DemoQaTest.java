@@ -39,7 +39,7 @@ public class DemoQaTest extends TestBase {
                 setState(state).
                 setCity(city).
                 submit().
-                checkResult("Student Name", gender + " " + surname).
+                checkResult("Student Name", name + " " + surname).
                 checkResult("Student Email", email).
                 checkResult("Gender", "Male").
                 checkResult("Mobile", mobile).
