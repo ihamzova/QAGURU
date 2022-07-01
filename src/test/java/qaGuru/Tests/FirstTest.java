@@ -11,7 +11,7 @@ public class FirstTest {
     void successfulSearchTest() {
         open("https://www.google.com/");
         $("[name=q]").setValue("selenide").pressEnter();
-        $("[id=search]").shouldHave(text("https://selenide.org"));
+        $("[id=search]").shouldHave(text("https://ru.selenide.org"));
         System.out.println("changes in domain needed because of different countries");
     }
 }
