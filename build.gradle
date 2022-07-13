@@ -5,6 +5,10 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://repo.clojars.org'
+        name 'Clojars'
+    }
 }
 
 def allureVersion = "2.18.1",
@@ -28,14 +32,23 @@ allure {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:$selenideVersion",
-            "io.qameta.allure:allure-selenide:$allureVersion",
-            "org.junit.jupiter:junit-jupiter:$junitVersion",
-            "org.slf4j:slf4j-simple:$slf4jVersion"
-    )
+            'com.codeborne:selenide:6.6.3',
+            "org.junit.jupiter:junit-jupiter:5.8.2",
+            "org.slf4j:slf4j-simple:1.7.36",
+            "com.github.javafaker:javafaker:1.0.2",
+            "io.qameta.allure:allure-selenide:2.18.1",
+            "org.aeonbits.owner:owner:1.0.12")
 }
-
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+task properties_demoQaTest (type: Test) {
+    useJUnitPlatform{
+        includeTags "demoQaTest"
+    }
+}
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {

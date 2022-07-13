@@ -1,6 +1,9 @@
 package qaGuru.Tests;
 
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.RegistrationFormPage;
@@ -22,6 +25,9 @@ public class DemoQaTest extends TestBase {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
+
+    @Tag("demoQaTest")
+    @Owner("Irina")
     @DisplayName("Test with ValueSourse")
     @ValueSource(strings = {"Anna", "Света"})
     @ParameterizedTest(name = "Заполнения формы регистрации студента с именем {0}")
